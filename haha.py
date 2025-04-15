@@ -101,6 +101,46 @@ def consulta_estatisticas(dados):
         except ValueError:
             print("Entrada inválida. Digite um número ou 'sair'.")
 
+
+def gerar_graficos(dados):
+    """
+    Gera os gráficos especificados a partir dos dados.
+    """
+    print("\n=== GERANDO GRÁFICOS ===")
+    
+    # Gráfico de dispersão: horas de sono x nota final
+    if 'horas_sono' in dados.columns and 'nota_final' in dados.columns:
+        plt.figure(figsize=(10, 6))
+        plt.scatter(dados['horas_sono'], dados['nota_final'], alpha=0.6)
+        plt.title('Relação entre Horas de Sono e Nota Final')
+        plt.xlabel('Horas de Sono por Noite')
+        plt.ylabel('Nota Final')
+        plt.grid(True)
+        plt.show()
+    
+    # Gráfico de barras: idade x média das notas parciais
+    if 'idade' in dados.columns and 'nota_parcial' in dados.columns:
+        plt.figure(figsize=(10, 6))
+        dados.groupby('idade')['nota_parcial'].mean().plot(kind='bar')
+        plt.title('Média das Notas Parciais por Idade')
+        plt.xlabel('Idade')
+        plt.ylabel('Média das Notas Parciais')
+        plt.grid(True)
+        plt.show()
+    
+    # Gráfico de pizza: distribuição por faixa etária
+    if 'idade' in dados.columns:
+        plt.figure(figsize=(8, 8))
+        bins = [0, 17, 21, 24, 100]
+        labels = ['Até 17', '18 a 21', '21 a 24', '25 ou mais']
+        dados['faixa_etaria'] = pd.cut(dados['idade'], bins=bins, labels=labels, right=False)
+        contagem = dados['faixa_etaria'].value_counts()
+        contagem.plot(kind='pie', autopct='%1.1f%%', startangle=90)
+        plt.title('Distribuição por Faixa Etária')
+        plt.ylabel('')
+        plt.show()
+
+
 def main():
     """Função principal que executa o programa."""
     print("=== ANALISADOR DE DADOS DE ESTUDANTES ===")
@@ -116,6 +156,12 @@ def main():
     
     # Consulta de estatísticas
     consulta_estatisticas(dados_limpos)
+    
+    # Gerar gráficos
+    gerar_graficos(dados_limpos)
+    
+    print("\nAnálise concluída com sucesso!")
+
 
 if __name__ == "__main__":
     main()
