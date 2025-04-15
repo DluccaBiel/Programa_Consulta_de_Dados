@@ -1,0 +1,7 @@
+site_name: Analisador de Dados de Estudantes
+nav:
+  - Home: index.md
+  - Código: codigo.md
+theme:
+  name: readthedocs
+ 
