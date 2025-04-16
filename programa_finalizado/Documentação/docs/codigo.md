@@ -68,3 +68,61 @@ Parâmetros:
 dados: Um DataFrame contendo os dados limpos.
 
 Retorno: Exibe os gráficos gerados.
+
+Estrutura do Projeto
+O código está estruturado da seguinte forma:
+
+Funções:
+
+carregar_dados(): Carrega os dados do arquivo.
+
+resumo_estatistico(dados): Exibe o resumo estatístico.
+
+limpeza_dados(dados): Limpa os dados.
+
+consulta_estatisticas(dados): Consulta estatísticas.
+
+gerar_graficos(dados): Gera gráficos.
+
+Bibliotecas:
+
+pandas: Para manipulação dos dados.
+
+matplotlib.pyplot: Para geração dos gráficos.
+
+pathlib.Path: Para verificar a existência do arquivo.
+
+Como usar
+Carregar os dados: O usuário fornece o caminho de um arquivo CSV contendo os dados dos estudantes.
+
+Gerar resumos estatísticos: Após o carregamento, um resumo estatístico é exibido.
+
+Limpeza de dados: A função limpeza_dados() realiza a limpeza necessária para corrigir valores ausentes.
+
+Consultas de estatísticas: O usuário pode consultar a média, mediana, moda e desvio padrão de qualquer coluna numérica.
+
+Gerar gráficos: Gráficos de dispersão, barras e pizza são gerados para análise visual.
+
+Este código permite realizar uma análise eficiente dos dados de estudantes, com foco na presença, notas e dados demográficos.
+
+yaml
+Copiar
+Editar
+
+---
+
+### **Estrutura do Projeto**
+
+Agora, o conteúdo deve estar assim na sua pasta **`docs/`**:
+
+docs/ │ ├── index.md # Página inicial do seu projeto (explicação geral) ├── codigo.md # Documentação do código (explicação das funções) ├── mkdocs.yml # Arquivo de configuração do MkDocs
+
+yaml
+Copiar
+Editar
+
+---
+
+### **Finalizando**
+
+Depois de criar esses dois arquivos, você pode rodar o comando `mkdocs serve` no terminal para visualizar
